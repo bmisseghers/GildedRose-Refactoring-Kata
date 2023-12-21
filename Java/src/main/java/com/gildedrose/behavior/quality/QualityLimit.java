@@ -9,6 +9,9 @@ public class QualityLimit {
     private final int min_q_level;
 
     private QualityLimit(int max_q_level, int min_q_level) {
+        if (max_q_level < min_q_level) {
+            throw new IllegalArgumentException("max quality level needs to be bigger then min quality level");
+        }
         this.max_q_level = max_q_level;
         this.min_q_level = min_q_level;
     }
