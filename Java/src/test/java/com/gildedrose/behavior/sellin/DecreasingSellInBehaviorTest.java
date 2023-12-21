@@ -11,8 +11,8 @@ public class DecreasingSellInBehaviorTest {
     private SellInBehavior sellInBehavior;
 
     @BeforeEach
-    public void setUp() throws Exception {
-        sellInBehavior = new DecreasingSellInBehavior();
+    public void setUp() {
+        sellInBehavior = DecreasingSellInBehavior.newInstance();
     }
 
     @Test

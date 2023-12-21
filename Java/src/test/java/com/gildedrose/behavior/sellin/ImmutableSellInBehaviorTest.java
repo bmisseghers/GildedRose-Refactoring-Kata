@@ -12,7 +12,7 @@ public class ImmutableSellInBehaviorTest {
 
     @BeforeEach
     public void setUp() throws Exception {
-        sellInBehavior = new ImmutableSellInBehavior();
+        sellInBehavior = ImmutableSellInBehavior.newInstance();
     }
 
     @Test
