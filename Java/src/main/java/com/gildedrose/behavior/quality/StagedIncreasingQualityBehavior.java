@@ -8,15 +8,15 @@ import java.util.stream.Collectors;
 
 public class StagedIncreasingQualityBehavior implements QualityBehavior {
 
-    public static final int MAX_QUALITY_LEVEL = 50;
-    public static final int MIN_QUALITY_LEVEL = 0;
     private final List<QualityStage> stages;
     private final QualityStage defaultStage;
+    private final QualityLimit qualityLimit;
 
 
     private StagedIncreasingQualityBehavior(List<QualityStage> stages, int defaultQualityIncrease) {
         this.stages = getSortedQualityStages(stages);
         this.defaultStage = QualityStage.of(0, defaultQualityIncrease);
+        this.qualityLimit = QualityLimit.DEFAULT();
     }
 
     public static StagedIncreasingQualityBehavior withStages(List<QualityStage> stages, int defaultQualityIncrease) {
@@ -38,7 +38,7 @@ public class StagedIncreasingQualityBehavior implements QualityBehavior {
     }
 
     private int limitQuality(int newQuality) {
-        return Math.max(MIN_QUALITY_LEVEL, Math.min(MAX_QUALITY_LEVEL, newQuality));
+        return qualityLimit.execute(newQuality);
     }
 
     private QualityStage findStage(Item item) {
