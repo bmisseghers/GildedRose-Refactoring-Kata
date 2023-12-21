@@ -111,6 +111,13 @@ class GildedRoseTest {
     }
 
     @Test
+    void testBackstagePassesExpired() {
+        GildedRose app = GildedRoseAppTester.runFor(1, new Item("Backstage passes to a TAFKAL80ETC concert", 0, 40));
+        assertEquals(-1, app.items[0].sellIn);
+        assertEquals(0, app.items[0].quality);
+    }
+
+    @Test
     void testConjuredManaCake() {
         GildedRose app = GildedRoseAppTester.runFor(1, new Item("Conjured Mana Cake", 3, 6));
         assertEquals(2, app.items[0].sellIn);
