@@ -9,10 +9,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class DecreasingSellInBehaviorTest {
 
     private SellInBehavior sellInBehavior;
+    private SellInBehavior doubleDecreasingSellInBehavior;
 
     @BeforeEach
     public void setUp() {
         sellInBehavior = DecreasingSellInBehavior.newInstance();
+        doubleDecreasingSellInBehavior = DecreasingSellInBehavior.newInstance(2);
     }
 
     @Test
@@ -37,6 +39,30 @@ public class DecreasingSellInBehaviorTest {
         sellInBehavior.processSellInUpdate(item);
 
         assertEquals(-2, item.sellIn);
+    }
+
+    @Test
+    void doubleDecreaseSellIn() {
+        Item item = getItem(10);
+        doubleDecreasingSellInBehavior.processSellInUpdate(item);
+
+        assertEquals(8, item.sellIn);
+    }
+
+    @Test
+    void doubleDecreaseSellInZero() {
+        Item item = getItem(0);
+        doubleDecreasingSellInBehavior.processSellInUpdate(item);
+
+        assertEquals(-2, item.sellIn);
+    }
+
+    @Test
+    void doubleDecreaseNegativeSellIn() {
+        Item item = getItem(-1);
+        doubleDecreasingSellInBehavior.processSellInUpdate(item);
+
+        assertEquals(-3, item.sellIn);
     }
 
     private Item getItem(int sellIn) {
