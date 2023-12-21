@@ -13,11 +13,11 @@ public class StagedIncreasingQualityBehaviorTest {
 
     private QualityBehavior stagedQualityBehavior;
 
-    private QualityStage stage1 = QualityStage.of(10, 2);
-    private QualityStage stage2 = QualityStage.of(5, 3);
+    private final QualityStage stage1 = QualityStage.of(10, 2);
+    private final QualityStage stage2 = QualityStage.of(5, 3);
 
     @BeforeEach
-    public void setUp() throws Exception {
+    public void setUp() {
         stagedQualityBehavior = StagedIncreasingQualityBehavior.withStages(new ArrayList<>(Arrays.asList(stage1, stage2)), 1);
     }
 

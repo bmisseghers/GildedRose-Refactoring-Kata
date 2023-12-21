@@ -40,7 +40,11 @@ public class ItemBehaviorPicker {
     }
 
     private static ItemBehavior getBackstagePassesItemBehavior() {
-        List<QualityStage> stages = new ArrayList<>(Arrays.asList(QualityStage.of(10,2), QualityStage.of(5,3)));
+        List<QualityStage> stages = new ArrayList<>(
+                Arrays.asList(
+                        QualityStage.of(10,2),
+                        QualityStage.of(5,3)
+                ));
         return ItemBehaviorImpl.of(StagedIncreasingQualityBehavior.withStages(stages, 1), DecreasingSellInBehavior.newInstance());
     }
 

@@ -11,7 +11,7 @@ public class IncreasingQualityBehaviorTest {
     private QualityBehavior qualityBehavior;
 
     @BeforeEach
-    public void setUp() throws Exception {
+    public void setUp() {
         qualityBehavior = new IncreasingQualityBehavior();
     }
 
